@@ -9,8 +9,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
-    env_file:
-      - .env.app
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
     restart: always
     depends_on:
       - db
@@ -20,9 +23,12 @@ services:
     
   db:
     image: mysql:8
-    env_file:
-     - .env.db
-#    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    # restart: on-failure
     networks:
       backend:
         ipv4_address: 172.20.0.10
