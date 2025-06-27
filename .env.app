@@ -1,4 +1,4 @@
-DB_HOST="172.20.0.10"
+DB_HOST="db"
 DB_USER="app"
 DB_PASSWORD="QwErTy1234"
 DB_NAME="virtd"
